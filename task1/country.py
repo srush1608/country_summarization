@@ -2,19 +2,24 @@ from flask import Flask, jsonify
 import psycopg2
 import requests
 from groq import Groq
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
 # Database connection 
-DB_NAME = "weather"
+# DB_NAME = "weather"
 DB_USER = "postgres"
 DB_PASS = "1608@HRt"
 DB_HOST = "localhost"
 DB_PORT = "5432"
+DB_NAME=os.getenv("DB_NAME")
+print(DB_NAME)
 
 API_KEY = "QRcS8mMo2+PAmjj0mNAhWQ==N6CfqoAQQ9IAxmLj"
 
-GROQ_API_KEY = "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"
+GROQ_API_KEY=os.getenv("GROQ_API_KEY")
 
 client = Groq(api_key=GROQ_API_KEY)
 
